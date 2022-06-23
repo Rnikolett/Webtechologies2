@@ -1,0 +1,14 @@
+.title{
+    font-size: larger;
+    font-weight: 700;
+}
+
+.attention{
+    animation: attentionAnimation 4s linear infinite;
+}
+
+@keyframes attentionAnimation {
+    0% {background-color: #ff0000;}
+    50% {background-color: #ff7400;}
+    100% {background-color: #ff0000;}
+}

@@ -1,0 +1,25 @@
+<div class="row d-flex justify-content-center">
+<form [formGroup]="appointmentForm" class="col-md-6 bg-light rounded p-3">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="title" class="form-control" id="title" formControlName="title">
+      <div *ngIf="title.invalid && (title.dirty||title.touched)" class="alert alert-danger">
+        <small>Title required</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="body">Body</label>
+      <textarea type="body" class="form-control" id="body" formControlName="body">
+      </textarea>
+    </div>
+    <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" formControlName="date" [min]="getToday()">
+        <div *ngIf="date.invalid && (date.dirty||date.touched)" class="alert alert-danger">
+          <small>Date required</small>
+        </div>
+    </div>
+    <button *ngIf="!this.isItEdit" type="submit" class="btn btn-primary mt-4" (click)="save()" [disabled]="appointmentForm.invalid">Add appointment</button>
+    <button *ngIf="this.isItEdit" type="submit" class="btn btn-primary mt-4" (click)="edit()" [disabled]="appointmentForm.invalid">Edit appointment</button>
+</form>
+</div>

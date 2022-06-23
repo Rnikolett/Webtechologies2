@@ -1,0 +1,32 @@
+<div *ngIf="this.show" class="card p-2" [ngClass]="{'bg-warning': isItNear(),'bg-danger':isItExpired()}" >
+    <div class="row-md-8">
+        <div class="col-md-6 title">
+            {{appointment.title}}
+        </div>
+    </div>
+    <div class="row-md-8">
+        <div class="col-md-6">
+            {{appointment.date | date: 'YYYY. MM. d'}}
+        </div>
+    </div>
+    <div id="accordion" class="row-md-12">
+        <button *ngIf="!isItFit()" (click)="toggleCollapse()" class="btn btn-primary m-2" type="button" >
+            Toggle textbody
+        </button>
+        <div class="collapse" [ngClass]="{'show':isItVisible()}">
+            <div class="card card-body">
+            {{appointment.body}}
+            </div>
+        </div>
+    </div>
+    <div class="row-md-10">
+        <div class="col-xs-4">
+            <div class="btn btn-secondary m-2" [ngClass]="{'d-none':isItExpired()}" (click)="modify()">
+                Modify
+            </div>
+            <div class="btn btn-secondary m-2" [ngClass]="{'attention':isItExpired()}" (click)="delete()">
+                Delete
+            </div>
+        </div>
+    </div>
+</div>

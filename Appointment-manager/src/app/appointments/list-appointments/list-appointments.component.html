@@ -1,0 +1,6 @@
+<div class="row d-flex justify-content-center">
+    <h2>{{this.userName}}</h2>
+<div class="col-md-4 my-2" *ngFor="let appointment of appointmentList">
+<app-appointment-entity [appointment]="appointment"></app-appointment-entity>
+</div>
+</div>

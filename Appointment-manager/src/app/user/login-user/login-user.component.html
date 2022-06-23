@@ -1,0 +1,22 @@
+<form [formGroup]="loginForm" class="col-md-4 bg-light rounded p-3 center">
+  <div class="form-group m-2">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" formControlName="email">
+    <div *ngIf="email.invalid && (email.dirty||email.touched)" class="alert alert-danger">
+      <small>Invalid email</small>
+    </div>
+  </div>
+  <div class="form-group m-2">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" formControlName="password">
+    <div *ngIf="password.invalid && (password.dirty||password.touched)" class="alert alert-danger mt-1">
+      <small>Invalid password</small>
+    </div>
+  </div>
+  <div class="m-2">
+    <button type="submit" class="btn btn-primary my-3" (click)="login()" [disabled]="loginForm.invalid">Login</button>
+  </div>
+  <div *ngIf="!this.loginStatus" class="alert alert-danger mt-1">
+    <small>Invalid email or password</small>
+  </div>
+</form>
